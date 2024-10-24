@@ -23,3 +23,13 @@ document.addEventListener('turbo:before-fetch-request', function(event) {
 document.addEventListener('turbo:before-fetch-response', function(event) {
   adapter.formSubmissionFinished(this);
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  const modal = document.getElementById("modal");
+  const closeButton = document.getElementById("close-modal");
+
+  closeButton.addEventListener("click", function() {
+    modal.style.display = "none"; // Ocultar el modal
+  });
+});
+
