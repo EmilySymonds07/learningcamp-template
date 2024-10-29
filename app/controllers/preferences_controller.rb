@@ -39,7 +39,6 @@ class PreferencesController < ApplicationController
     if @preference.save
       redirect_to preferences_path, notice: 'Preference was successfully created.'
     else
-      # Si falla la creación, renderizamos nuevamente el index con errores
       @preferences = current_user.preferences
       @pagy, @records = pagy(@preferences)
       render :index
