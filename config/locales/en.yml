@@ -101,6 +101,7 @@ en:
       - Name
       - Description
       - Restriction
+      create_success: Preference successfully created.
       create_preference: Create Preference
       description: Description
       edit:
@@ -124,6 +125,7 @@ en:
       columns:
       - Name
       - Ingredients
+      create_success: Recipe successfully created.
       create_recipe: Create Recipe
       description: Here you will find all your recipes
       ingredients: Ingredients
