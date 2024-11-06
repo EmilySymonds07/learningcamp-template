@@ -102,6 +102,8 @@ en:
       - Description
       - Restriction
       create_preference: Create Preference
+      create_success: Preference successfully created.
+      destroy_success: Preference successfully removed.
       description: Description
       edit:
         description: ''

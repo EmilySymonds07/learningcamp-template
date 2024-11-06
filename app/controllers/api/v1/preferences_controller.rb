@@ -3,6 +3,7 @@
 module API
   module V1
     class PreferencesController < API::V1::APIController
+      before_action :authenticate_user!
       def index
         @preferences = current_user.preferences
         @pagy, @records = pagy(@preferences)
@@ -26,7 +27,6 @@ module API
       def destroy
         @preference = Preference.find(params[:id])
         @preference.destroy!
-        redirect_to preferences_path, notice: 'Preference was successfully deleted.'
       end
 
       private
