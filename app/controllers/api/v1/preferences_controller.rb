@@ -18,12 +18,9 @@ module API
       end
 
       def update
-        @preference = Preference.find(params[:id])
-        if @preference.update(preference_params)
-          redirect_to preferences_path, notice: 'Preference was successfully updated.'
-        else
-          render :edit
-        end
+        @preference = current_user.preferences.find(params[:id])
+        @preference.update!(preference_params)
+        render :show
       end
 
       def destroy
