@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   resources :users
-  resources :preferences
+  resources :preferences, only: %i[index new create show edit update destroy]
   resources :recipes
 
 

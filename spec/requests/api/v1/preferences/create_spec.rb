@@ -23,7 +23,7 @@ describe 'POST /api/v1/preferences', type: :request do
         expect(response).to have_http_status(:success)
       end
 
-      it 'returns the created preference' do
+      it 'returns the created preference' do :aggregate_failures
         subject
         preference = Preference.last
         expect(json[:preference][:id]).to eq(preference.id)
@@ -41,7 +41,7 @@ describe 'POST /api/v1/preferences', type: :request do
         expect(response).to have_http_status(:bad_request)
       end
 
-      it 'returns error messages upon failure' do
+      it 'returns error messages upon failure' do :aggregate_failures
         subject
         json_response = JSON.parse(response.body).with_indifferent_access
         expect(json_response[:errors][0]['name']).to include("can't be blank")

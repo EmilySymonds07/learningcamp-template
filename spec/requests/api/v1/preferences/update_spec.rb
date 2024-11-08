@@ -54,7 +54,7 @@ describe 'PUT api/v1/preferences/:id' do
       expect(preference.reload.name).not_to eq(invalid_attributes[:name])
     end
 
-    it 'returns the error messages' do
+    it 'returns the error messages' do :aggregate_failures
       subject
       json_response = JSON.parse(response.body).with_indifferent_access
       expect(json_response[:errors][0]['name']).to include("can't be blank")
