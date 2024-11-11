@@ -20,11 +20,15 @@ FactoryBot.reload
 Rails.root.glob('spec/support/**/*.rb').each { |file| require file }
 
 Capybara.register_driver :chrome do |app|
-  args = %w[no-sandbox disable-gpu disable-dev-shm-usage]
-  args << (ENV['HEADLESS'] == 'true' ? 'headless' : 'non-headless')
-  options = Selenium::WebDriver::Chrome::Options.new(args:)
-  Capybara::Selenium::Driver.new(app, browser: :chrome, options:)
+  options = Selenium::WebDriver::Chrome::Options.new
+  options.add_argument('--no-sandbox')
+  options.add_argument('--disable-dev-shm-usage')
+  options.add_argument('--headless') # Remove this line to run tests with a visible browser
+
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
+
+Capybara.javascript_driver = :chrome
 
 Capybara.configure do |config|
   config.javascript_driver = :chrome

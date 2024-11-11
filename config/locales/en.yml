@@ -127,6 +127,8 @@ en:
       - Name
       - Ingredients
       create_recipe: Create Recipe
+      create_success: Recipe successfully created.
+      destroy_success: Recipe successfully removed.
       description: Here you will find all your recipes
       ingredients: Ingredients
       name: Name
