@@ -1,24 +1,28 @@
 # == Schema Information
 #
-# Table name: preferences
+# Table name: recipes
 #
 #  id          :bigint           not null, primary key
 #  name        :string
 #  description :text
-#  restriction :boolean
+#  ingredients :text
+#  user_id     :bigint
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  user_id     :integer
+#
+# Indexes
+#
+#  index_recipes_on_user_id  (user_id)
 #
 require 'rails_helper'
 
-describe Preference do
+describe Recipe do
     describe 'validations' do
-        subject { build(:preference) }
+        subject { build(:recipe) }
 
         it { is_expected.to validate_presence_of(:name) }
         it { is_expected.to validate_presence_of(:description) }
-        it { is_expected.to validate_inclusion_of(:restriction).in_array([true, false]) }
+        it { is_expected.to validate_presence_of(:ingredients) }
     end
     
     describe 'associations' do

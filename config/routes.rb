@@ -24,7 +24,13 @@ Rails.application.routes.draw do
 
   resources :users
   resources :preferences, only: %i[index new create show edit update destroy]
-  resources :recipes
+  resources :recipes, only: %i[index new create show destroy]
+
+  namespace :api do
+    namespace :v1 do
+      resources :recipes, only: %i[index new create show destroy]
+    end
+  end
 
 
   namespace :api do
